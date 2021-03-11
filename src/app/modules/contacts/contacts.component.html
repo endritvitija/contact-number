@@ -1,1 +1,22 @@
-<p>contact works!</p>
+<mat-card class="contacts-details">
+  <mat-card-title>Contact List</mat-card-title>
+  <mat-card-subtitle
+    >You have <b>{{ contacts.length }}</b> contacts</mat-card-subtitle
+  >
+</mat-card>
+
+<div *ngFor="let item of contacts" style="margin: 20px">
+  <app-contact-item
+    fullName="{{ item.name }} {{ item.surname }}"
+  ></app-contact-item>
+</div>
+
+<mat-card class="container__input">
+  <mat-form-field class="">
+    <mat-label>New Contact</mat-label>
+    <input matInput type="text" placeholder="New Contact" />
+  </mat-form-field>
+  <button mat-icon-button>
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</mat-card>

@@ -1,27 +1,39 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-    >
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" hasBackdrop="ture">
+  <mat-drawer #drawer mode="over">
+    <div class="drawer__items">
+      <a
+        routerLink="home"
+        (click)="drawer.toggle()"
+        class="drawer__items--button"
+      >
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+    </div>
+    <div class="drawer__items">
+      <a
+        routerLink="contacts"
+        (click)="drawer.toggle()"
+        class="drawer__items--button"
+      >
+        <mat-icon>contacts</mat-icon>
+        Contacts
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

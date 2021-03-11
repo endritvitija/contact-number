@@ -1,0 +1,33 @@
+.item-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    width: 50px;
+  }
+
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 20px;
+  }
+
+  mat-card-subtitle {
+    margin: 0;
+    margin-left: 20px;
+  }
+
+  &-item {
+    display: flex;
+  }
+
+  mat-icon {
+    color: #333;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

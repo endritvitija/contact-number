@@ -1,3 +1,32 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+mat-drawer-content {
+  height: calc(100vh - 124px);
+}
+
+.drawer__items {
+  padding: 20px;
+
+  &--button {
+    display: flex;
+    align-items: center;
+    width: 250px;
+
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    mat-icon {
+      padding-right: 10px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ddd;
+  }
+}
