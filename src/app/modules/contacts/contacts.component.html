@@ -7,16 +7,18 @@
 
 <div *ngFor="let item of contacts" style="margin: 20px">
   <app-contact-item
-    fullName="{{ item.name }} {{ item.surname }}"
+    [data]="item"
+    (contactId)="deleteContact($event)"
   ></app-contact-item>
 </div>
 
-<mat-card class="container__input">
-  <mat-form-field class="">
-    <mat-label>New Contact</mat-label>
-    <input matInput type="text" placeholder="New Contact" />
-  </mat-form-field>
-  <button mat-icon-button>
-    <mat-icon>add_circle_outline</mat-icon>
+<div class="conatiner__fab">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
   </button>
-</mat-card>
+</div>

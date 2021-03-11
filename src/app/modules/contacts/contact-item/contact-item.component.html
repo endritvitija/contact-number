@@ -1,12 +1,14 @@
 <mat-card class="item-container">
   <div class="item-container-item">
-    <img mat-card-avatar [src]="getAvatar()" alt="" />
+    <img mat-card-avatar [src]="data.avatar" alt="" />
     <div>
-      <mat-card-title>{{ fullName }}</mat-card-title>
-      <mat-card-subtitle>{{ fullName }}</mat-card-subtitle>
+      <mat-card-title
+        >{{ data.first_name }} {{ data.last_name }}</mat-card-title
+      >
+      <mat-card-subtitle>{{ data.first_name }}</mat-card-subtitle>
     </div>
   </div>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="getContactId(data.id)">
     <mat-icon>delete_outline</mat-icon>
   </button>
 </mat-card>

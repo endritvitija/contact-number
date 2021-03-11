@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AvatarGenerator } from 'random-avatar-generator';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Contacts } from 'src/app/shared/models/contacts.model';
 
 @Component({
   selector: 'app-contact-item',
@@ -8,17 +8,17 @@ import { AvatarGenerator } from 'random-avatar-generator';
 })
 export class ContactItemComponent implements OnInit {
 
-  @Input() fullName: string; 
+  @Input() data: any; 
 
-  public generator = new AvatarGenerator();
+  @Output() contactId = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getAvatar() {
-    return this.generator.generateRandomAvatar(this.fullName);
+  getContactId(id: number) {
+    this.contactId.emit(id);
   }
 
 }

@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Add new Contact</h1>
+<div mat-dialog-content>
+  <form [formGroup]="contactsForm">
+    <div class="avatar__container">
+      <img mat-card-sm-image [src]="contactsForm.value.avatar" alt="" />
+      <mat-form-field appearance="fill">
+        <mat-label>Avatar</mat-label>
+        <input matInput formControlName="avatar" />
+        <span matSuffix>
+          <mat-icon>link</mat-icon>
+        </span>
+      </mat-form-field>
+    </div>
+    <div class="container-fullname">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="last_name" />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="action__bottom">
+  <button mat-button (click)="onCloseModal()">
+    <mat-icon>close</mat-icon>
+    Close
+  </button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">
+    <mat-icon>add</mat-icon>
+    Add
+  </button>
+</div>

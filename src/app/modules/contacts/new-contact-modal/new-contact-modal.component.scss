@@ -1,0 +1,26 @@
+.avatar__container {
+  display: flex;
+  align-items: center;
+
+  mat-form-field {
+    margin-left: 20px;
+    margin-top: 20px;
+
+    width: 100%;
+  }
+}
+
+.container-fullname {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  mat-form-field {
+    width: 49%;
+  }
+}
+
+.action__bottom {
+  display: flex;
+  justify-content: flex-end;
+}
