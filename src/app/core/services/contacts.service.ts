@@ -16,8 +16,16 @@ export class ContactsService {
     return this.http.get<Contacts[]>(`${apiUrl}/contacts`);
   }
 
+  getContact(contactId: number) {
+    return this.http.get<Contacts>(`${apiUrl}/contacts/${contactId}`);
+  }
+
+  editContact(payload: Contacts) {
+    return this.http.put<Contacts>(`${apiUrl}/contacts/${payload.id}`, payload);
+
+  }
+
   addContact(payload: Contacts) {
-    debugger
     return this.http.post<Contacts>(`${apiUrl}/contacts`, payload);
   }
 

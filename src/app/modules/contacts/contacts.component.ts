@@ -11,11 +11,23 @@ import { NewContactModalComponent } from './new-contact-modal/new-contact-modal.
 })
 export class ContactsComponent implements OnInit {
   contacts: Contacts[] = [];
+  contactId: string;
 
   constructor(private _contactsServices: ContactsService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getContacts();
+  }
+
+  openEditContact(contactId: string) {
+    const dialogRef = this.dialog.open(NewContactModalComponent, {
+      width: '90vw',
+      data: contactId 
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getContacts();
+    });
   }
 
   getContacts() {

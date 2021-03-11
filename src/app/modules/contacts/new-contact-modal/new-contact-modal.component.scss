@@ -24,3 +24,19 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.address__container {
+  &--header {
+    display: flex;
+    justify-content: space-between;
+
+    &--title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

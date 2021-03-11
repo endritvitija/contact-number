@@ -10,15 +10,20 @@ export class ContactItemComponent implements OnInit {
 
   @Input() data: any; 
 
-  @Output() contactId = new EventEmitter<number>();
+  @Output() deleteEvent = new EventEmitter<number>();
+  @Output() openEditEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getContactId(id: number) {
-    this.contactId.emit(id);
+  editContact(id: string) {
+    this.openEditEvent.emit(id);
+  }
+
+  deleteContact(id: number) {
+    this.deleteEvent.emit(id);
   }
 
 }

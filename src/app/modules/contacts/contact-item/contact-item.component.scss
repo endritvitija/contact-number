@@ -4,6 +4,11 @@
   align-items: center;
   justify-content: space-between;
 
+  &:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+  }
+
   mat-card-title {
     font-size: 1.5rem;
     font-weight: 500;
@@ -17,6 +22,7 @@
 
   &-item {
     display: flex;
+    width: 100%;
   }
 
   mat-icon {

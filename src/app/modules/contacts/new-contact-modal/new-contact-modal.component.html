@@ -21,6 +21,46 @@
         <input matInput formControlName="last_name" />
       </mat-form-field>
     </div>
+    <div formArrayName="addresses">
+      <div
+        class="address__container"
+        *ngFor="let address of addresses.controls; let i = index"
+      >
+        <div [formGroupName]="i">
+          <div class="address__container--header">
+            <h3 class="address__container--header--title">
+              Address #{{ address.value.id }}
+            </h3>
+            <button mat-icon-button>
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Street 1</mat-label>
+            <input matInput formControlName="street1" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Street 2</mat-label>
+            <input matInput formControlName="street2" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Town</mat-label>
+            <input matInput formControlName="town" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option
+                *ngFor="let contrie of countries"
+                [value]="contrie.iso2"
+              >
+                {{ contrie.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions class="action__bottom">
