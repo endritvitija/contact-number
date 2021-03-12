@@ -1,0 +1,1 @@
+json-server ./src/app/core/mocks/contacts.json
