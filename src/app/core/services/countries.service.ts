@@ -12,7 +12,7 @@ export class CountriesService {
 
   constructor(private http: HttpClient) { }
 
-  getCountries() {
-    return this.http.get<Countrie[]>(`${apiUrl}/countries`);
+  get() {
+    return this.http.get<Countrie[]>(`/countries`);
   }
 }

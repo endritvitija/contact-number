@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactsService } from 'src/app/core/services/contacts.service';
+import { SnackBarService } from 'src/app/core/services/snackbar.service';
 import { Contacts } from 'src/app/shared/models/contacts.model';
 import { NewContactModalComponent } from './new-contact-modal/new-contact-modal.component';
 
@@ -13,7 +14,11 @@ export class ContactsComponent implements OnInit {
   contacts: Contacts[] = [];
   contactId: string;
 
-  constructor(private _contactsServices: ContactsService, public dialog: MatDialog) {}
+  constructor(
+    private _contactsServices: ContactsService,
+    public dialog: MatDialog,
+    private _snackBarService: SnackBarService
+  ) {}
 
   ngOnInit(): void {
     this.getContacts();
@@ -22,16 +27,18 @@ export class ContactsComponent implements OnInit {
   openEditContact(contactId: string) {
     const dialogRef = this.dialog.open(NewContactModalComponent, {
       width: '90vw',
-      data: contactId 
+      data: contactId,
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.getContacts();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) { 
+        this.getContacts();
+      }
     });
   }
 
   getContacts() {
-    this._contactsServices.getContacts().subscribe(
+    this._contactsServices.get().subscribe(
       (response) => {
         this.contacts = response;
       },
@@ -40,19 +47,25 @@ export class ContactsComponent implements OnInit {
   }
 
   deleteContact(contactId: number) {
-    this._contactsServices.deleteContact(contactId).subscribe(() => {
+    this._contactsServices.delete(contactId).subscribe(() => {
+      this._snackBarService.displaySuccess(
+        'Contact item deleted successfully',
+        'OK'
+      );
       this.getContacts();
-    })
+    });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewContactModalComponent, {
       width: '90vw',
-      data: null
+      data: null,
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.getContacts();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { 
+        this.getContacts();
+      }
     });
   }
 }

@@ -11,17 +11,22 @@ const apiUrl = environment.apiUrl;
 export class AddressesService {
   constructor(private http: HttpClient) {}
 
-  getAddress(contactId: number) {
+  getOne(contactId: number) {
     return this.http.get<Address[]>(
-      `${apiUrl}/contacts/${contactId}/addresses`
+      `/contacts/${contactId}/addresses`
     );
+  }
+  
+  add(payload: Address) {
+    return this.http.post<Address>(`/addresses`, payload);
   }
 
-  addContactAddress(payload: Address, contactId: number) {
-    debugger
-    return this.http.post<Address>(
-      `${apiUrl}/contacts/${contactId}/addresses`,
-      payload
-    );
+  update(payload: Address, id: number) {
+    return this.http.put<Address>(`/addresses/${id}`, payload);
   }
+
+  delete(id: number) {
+    return this.http.delete<Address>(`/addresses/${id}`)
+  }
+
 }

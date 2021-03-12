@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContactRoutingModule } from './contacts-routing.module';
@@ -13,6 +14,7 @@ import { ContactsComponent } from './contacts.component';
 import { ContactItemComponent } from './contact-item/contact-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewContactModalComponent } from './new-contact-modal/new-contact-modal.component';
+import { SnackBarService } from 'src/app/core/services/snackbar.service';
 
 
 @NgModule({
@@ -27,7 +29,11 @@ import { NewContactModalComponent } from './new-contact-modal/new-contact-modal.
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
+  ],
+  providers: [
+    SnackBarService
   ]
 })
 export class ContactModule { }

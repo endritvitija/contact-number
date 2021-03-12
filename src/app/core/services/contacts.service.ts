@@ -12,24 +12,24 @@ export class ContactsService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts() {
-    return this.http.get<Contacts[]>(`${apiUrl}/contacts`);
+  get() {
+    return this.http.get<Contacts[]>(`/contacts`);
   }
 
-  getContact(contactId: number) {
-    return this.http.get<Contacts>(`${apiUrl}/contacts/${contactId}`);
+  getOne(contactId: number) {
+    return this.http.get<Contacts>(`/contacts/${contactId}`);
   }
 
-  editContact(payload: Contacts) {
-    return this.http.put<Contacts>(`${apiUrl}/contacts/${payload.id}`, payload);
+  edit(payload: Contacts) {
+    return this.http.put<Contacts>(`/contacts/${payload.id}`, payload);
 
   }
 
-  addContact(payload: Contacts) {
-    return this.http.post<Contacts>(`${apiUrl}/contacts`, payload);
+  add(payload: Contacts) {
+    return this.http.post<Contacts>(`/contacts`, payload);
   }
 
-  deleteContact(id: number) {
-    return this.http.delete<Contacts>(`${apiUrl}/contacts/${id}`)
+  delete(id: number) {
+    return this.http.delete<Contacts>(`/contacts/${id}`)
   }
 }

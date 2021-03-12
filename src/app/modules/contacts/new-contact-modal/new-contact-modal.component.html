@@ -29,9 +29,12 @@
         <div [formGroupName]="i">
           <div class="address__container--header">
             <h3 class="address__container--header--title">
-              Address #{{ address.value.id }}
+              Address #{{ i + 1 }}
             </h3>
-            <button mat-icon-button>
+            <button
+              mat-icon-button
+              (click)="removeAddress(i, address.value.id)"
+            >
               <mat-icon>close</mat-icon>
             </button>
           </div>
@@ -61,15 +64,23 @@
         </div>
       </div>
     </div>
+    <div *ngIf="contactId">
+      <button mat-button (click)="addAddress()">
+        <mat-icon>add</mat-icon>
+        Add Address
+      </button>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions class="action__bottom">
-  <button mat-button (click)="onCloseModal()">
+  <button mat-button (click)="onCloseModal(false)">
     <mat-icon>close</mat-icon>
     Close
   </button>
   <button mat-button cdkFocusInitial (click)="onSubmit()">
-    <mat-icon>add</mat-icon>
-    Add
+    <mat-icon *ngIf="contactId">save_outline</mat-icon>
+    <mat-icon *ngIf="!contactId">add</mat-icon>
+    <span *ngIf="contactId"> Save </span>
+    <span *ngIf="!contactId"> Add </span>
   </button>
 </div>
